@@ -1,0 +1,5 @@
+    if (newBook.title.toLowerCase() === "dear john") {
+                    reviewedBookImage.src = "https://m.media-amazon.com/images/M/MV5BMTk1NDEzMTU5NV5BMl5BanBnXkFtZTcwNTI3MTk5Mg@@._V1_FMjpg_UX1000_.jpg";
+                } else {
+                    reviewedBookImage.src = "";
+                }
