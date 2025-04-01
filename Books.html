@@ -3,190 +3,731 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Celi's Book Haven | Our Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary: #2c5e1a;
+            --primary-light: #3d7a29;
+            --secondary: #f8f1e5;
+            --accent: #e8c07d;
+            --dark: #1e1e1e;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: rgba(3, 66, 15, 0.8);
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
         header {
-            background-color: rgba(3, 66, 15, 0.8);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: small;
-            font-weight: 100;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--light);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
         }
-        nav {
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            justify-content: center;
-            background-color: rgb(15, 61, 29);
-            padding: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-    background-color: rgba(3, 66, 15, 0.8);
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    font-size: small;
-    position: fixed;
-    bottom: 0;
-    width: 100%; 
-    z-index: 100; 
-}
-
-        .hidden {
-            display: none;
-        }
-        .book {
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: white;
         }
-        .book img {
-            max-width: 100px;
-            margin-right: 20px;
+        
+        .logo i {
+            margin-right: 12px;
+            color: var(--accent);
         }
-        .book-details {
-            flex-grow: 1;
+        
+        nav {
+            display: flex;
+            align-items: center;
         }
-        .book-details h2 {
-            margin: 0;
-            font-size: 1.2rem;
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
-        .book-details p {
-            margin: 5px 0;
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            min-height: calc(100vh - 120px);
+            padding: 3rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .page-description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .books-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .book-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .book-cover {
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .book-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .book-info {
+            padding: 1.5rem;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .book-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .book-author i {
+            margin-right: 5px;
+            color: var(--primary-light);
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .book-genre {
+            background-color: var(--gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        .book-year {
+            color: #777;
+        }
+        
+        .book-rating {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .book-rating .rating-value {
+            margin-left: 5px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 94, 26, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .books-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-links a {
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Books</h1>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                Celi's Book Haven
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Books</a></li>
+                    <li><a href="review.html">Submit Review</a></li>
+                   
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html" id="home-link">Home</a>
-        <a href="#" id="book-list-link">Books</a>
-        <a href="review.html" id="submit-review-link">Submit Review</a>
-    </nav>
+    
     <main>
         <div class="container">
-            <div class="book">
-                <img src="https://th.bing.com/th/id/R.c715e40038acb319760862073b24f01e?rik=Dnfu9ro65hhNgA&riu=http%3a%2f%2fgraphics8.nytimes.com%2fimages%2f2008%2f04%2f11%2fbooks%2fmcmafia-190.jpg&ehk=1eTWEF9XF%2btt7WNzzJ6%2bHJ683pBD9trXVQ7Dnm4TBzE%3d&risl=&pid=ImgRaw&r=0" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Mc Mafia</h2>
-                    <p><strong>Author:</strong> Misha Glenny</p>
-                    <p><strong>Genre:</strong> Crime</p>
-                    <p><strong>Year:</strong> 2022</p>
-                    <p><strong>Rating:</strong> 4.5/5</p>
+            <div class="page-header">
+                <h1 class="page-title">Our Book Collection</h1>
+                <p class="page-description">Discover our carefully curated selection of books across various genres. Each title has been chosen for its exceptional quality and reader appeal.</p>
+            </div>
+            
+            <div class="books-container">
+                <!-- Book 1 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://th.bing.com/th/id/R.c715e40038acb319760862073b24f01e?rik=Dnfu9ro65hhNgA&riu=http%3a%2f%2fgraphics8.nytimes.com%2fimages%2f2008%2f04%2f11%2fbooks%2fmcmafia-190.jpg&ehk=1eTWEF9XF%2btt7WNzzJ6%2bHJ683pBD9trXVQ7Dnm4TBzE%3d&risl=&pid=ImgRaw&r=0');">
+                        <span class="book-badge">Bestseller</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Mc Mafia</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> Misha Glenny</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Crime</span>
+                            <span class="book-year">2022</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-value">4.5</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 2 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://www.botasot.info/media/botasot.info/images/2019/October/23/auto_LIB1571843117.jpg');">
+                        <span class="book-badge">Top Rated</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Shamite E Vdekjes</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> Hasan Hasanaj</p>
+                        <div class="book-meta">
+                            <span class="book-genre">History & Crime</span>
+                            <span class="book-year">2018</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="rating-value">4.9</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 3 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://d11udzuu2adwwu.cloudfront.net/covers/1300144/9789951704014.jpg');">
+                        <span class="book-badge">Classic</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Lugjet E Verdha I</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> Rexhep Hoxha</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Adventure</span>
+                            <span class="book-year">1959</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-value">3.8</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 4 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://images.booksense.com/images/540/103/9780553103540.jpg');">
+                        <span class="book-badge">Popular</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Game Of Thrones</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> George R.R Martin</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Adventure</span>
+                            <span class="book-year">1999</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="rating-value">5.0</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 5 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Dear_John_film_poster.jpg/220px-Dear_John_film_poster.jpg');">
+                        <span class="book-badge">Romance</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Dear John</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> Nicholas Sparks</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Romance</span>
+                            <span class="book-year">2019</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-value">3.9</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 6 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://m.media-amazon.com/images/I/91MMb6EDbRL._AC_UF1000,1000_QL80_.jpg');">
+                        <span class="book-badge">Mystery</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Stalking Jack The Ripper</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> Kerri Maniscalco</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Mystery</span>
+                            <span class="book-year">2004</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-value">3.5</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 7 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://images3.penguinrandomhouse.com/cover/9780553410068');">
+                        <span class="book-badge">Fantasy</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">The World Of Ice and Fire</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> George R.R Martin</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Mystery</span>
+                            <span class="book-year">1992</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-value">3.9</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 8 -->
+                <div class="book-card">
+                    <div class="book-cover" style="background-image: url('https://images.booksense.com/images/866/064/9780439064866.jpg');">
+                        <span class="book-badge">Must Read</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Harry Potter</h3>
+                        <p class="book-author"><i class="fas fa-user-edit"></i> J.K Rowling</p>
+                        <div class="book-meta">
+                            <span class="book-genre">Mystery</span>
+                            <span class="book-year">1993</span>
+                        </div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="rating-value">5.0</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn">View Details</button>
+                            <button class="btn btn-outline">Add Review</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="book">
-                <img src="https://www.botasot.info/media/botasot.info/images/2019/October/23/auto_LIB1571843117.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Shamite E Vdekjes</h2>
-                    <p><strong>Author:</strong> Hasan Hasanaj</p>
-                    <p><strong>Genre:</strong> History & Crime</p>
-                    <p><strong>Year:</strong> 2018</p>
-                    <p><strong>Rating:</strong> 4.9/5</p>
-                </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-book-open"></i>
+                Celi's Book Haven
             </div>
-
-            <div class="book">
-                <img src="https://d11udzuu2adwwu.cloudfront.net/covers/1300144/9789951704014.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Lugjet E Verdha I</h2>
-                    <p><strong>Author:</strong> Rexhep Hoxha</p>
-                    <p><strong>Genre:</strong> Adventure</p>
-                    <p><strong>Year:</strong> 1959</p>
-                    <p><strong>Rating:</strong> 3.8/5</p>
-                </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="review.html">Submit Review</a>
+               
             </div>
-
-
-            <div class="book">
-                <img src="https://images.booksense.com/images/540/103/9780553103540.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Game Of Thrones</h2>
-                    <p><strong>Author:</strong>George R.R Martin</p>
-                    <p><strong>Genre:</strong> Adventure</p>
-                    <p><strong>Year:</strong> 1999</p>
-                    <p><strong>Rating:</strong> 5.0/5</p>
-                </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-goodreads"></i></a>
             </div>
-
-            <div class="book">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Dear_John_film_poster.jpg/220px-Dear_John_film_poster.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Dear John</h2>
-                    <p><strong>Author:</strong> Nicholas Sparks</p>
-                    <p><strong>Genre:</strong> Romance</p>
-                    <p><strong>Year:</strong> 2019</p>
-                    <p><strong>Rating:</strong> 3.9/5</p>
-                </div>
+            <div class="copyright">
+                &copy; 2025 Celi's Book Haven. All rights reserved.
             </div>
-         
+        </div>
+    </footer>
 
-            <div class="book">
-                <img src="https://m.media-amazon.com/images/I/91MMb6EDbRL._AC_UF1000,1000_QL80_.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Stalking Jack The Ripper</h2>
-                    <p><strong>Author:</strong>Kerri Maniscalco</p>
-                    <p><strong>Genre:</strong> Mystery</p>
-                    <p><strong>Year:</strong> 2004</p>
-                    <p><strong>Rating:</strong> 3.5/5</p>
-                </div>
-            </div>
-
-
-            <div class="book">
-                <img src="https://images3.penguinrandomhouse.com/cover/9780553410068" alt="Book Cover">
-                <div class="book-details">
-                    <h2>The World Of Ice and Fire</h2>
-                    <p><strong>Author:</strong>George R.R Martin</p>
-                    <p><strong>Genre:</strong> Mystery</p>
-                    <p><strong>Year:</strong> 1992</p>
-                    <p><strong>Rating:</strong> 3.9/5</p>
-                </div>
-            </div>
-
-
-
-            <div class="book">
-                <img src="https://images.booksense.com/images/866/064/9780439064866.jpg" alt="Book Cover">
-                <div class="book-details">
-                    <h2>Harry Potter</h2>
-                    <p><strong>Author:</strong>J.K Rowling</p>
-                    <p><strong>Genre:</strong> Mystery</p>
-                    <p><strong>Year:</strong> 1993</p>
-                    <p><strong>Rating:</strong> 5.0/5</p>
-                </div>
-            </div>
-         
-         
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Add hover effect to book cards
+            const bookCards = document.querySelectorAll('.book-card');
+            
+            bookCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,244 +3,821 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Review</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Celi's Book Haven | Submit Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary: #2c5e1a;
+            --primary-light: #3d7a29;
+            --secondary: #f8f1e5;
+            --accent: #e8c07d;
+            --dark: #1e1e1e;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
-        header {
-            background-color: rgba(3, 66, 15, 0.8);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: small;
-            font-weight: 100;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: rgb(15, 61, 29);
-            padding: 0.5rem;
-        }
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-    background-color: rgba(3, 66, 15, 0.8);
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    font-size: small;
-    position: fixed;
-    bottom: 0;
-    width: 100%; 
-    z-index: 100; 
-}
-
         
-        .hidden {
-            display: none;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--dark);
+            line-height: 1.6;
         }
-        .form-container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--light);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
         }
-        label {
-            display: block;
-            margin: 0.5rem 0 0.2rem;
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        input, textarea, button {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.2rem 0 1rem;
-        }
-        .error {
-            color: red;
-            display: none;
-        }
-        .book {
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: white;
         }
-        .book img {
-            max-width: 300px; /* Increase the size of the book image */
-            margin-right: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+        .logo i {
+            margin-right: 12px;
+            color: var(--accent);
         }
-        .book-details {
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            min-height: calc(100vh - 120px);
+            padding: 3rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .page-description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .review-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .form-container {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 94, 26, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .rating-stars input {
+            display: none;
+        }
+        
+        .rating-stars label {
+            font-size: 1.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .rating-stars input:checked ~ label {
+            color: #ddd;
+        }
+        
+        .rating-stars label:hover,
+        .rating-stars input:checked + label,
+        .rating-stars label:hover ~ label {
+            color: var(--accent);
+        }
+        
+        .rating-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 94, 26, 0.3);
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .book-display {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .book-display-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-card {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .book-info {
             flex-grow: 1;
         }
-        .book-details h2 {
-            margin: 0;
-            font-size: 1.2rem;
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
-        .book-details p {
-            margin: 5px 0;
+        
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .book-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .book-meta-item i {
+            color: var(--primary-light);
+        }
+        
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+        
+        .thank-you-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: bounce 1s infinite alternate;
+        }
+        
+        .thank-you-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-message {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 94, 26, 0.3);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .book-card {
+                flex-direction: column;
+            }
+            
+            .book-cover {
+                width: 100%;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .rating-stars label {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-links a {
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Submit Review</h1>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                Celi's Book Haven
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="review.html" class="active">Submit Review</a></li>
+                   
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html" id="home-link">Home</a>
-        <a href="books.html" id="book-list-link">Books</a>
-        <a href="#" id="submit-review-link">Submit Review</a>
-    </nav>
+    
     <main>
-        <section id="submit-review" class="form-container">
-            <h2>Submit a Review</h2>
-            <form id="review-form">
-                <label for="title">Book Title:</label>
-                <input type="text" id="title" name="title" required>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Share Your Thoughts</h1>
+                <p class="page-description">We value your opinion! Submit your review and help other readers discover great books.</p>
+            </div>
+            
+            <div class="review-container">
+                <div class="form-container">
+                    <h2 class="form-title">Submit Your Review</h2>
+                    <form id="review-form">
+                        <div class="form-group">
+                            <label for="title" class="form-label">Book Title</label>
+                            <input type="text" id="title" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" id="author" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Your Rating</label>
+                            <div class="rating-container">
+                                <div class="rating-stars">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1"><i class="fas fa-star"></i></label>
+                                </div>
+                                <span class="rating-value" id="rating-value">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="review" class="form-label">Your Review</label>
+                            <textarea id="review" class="form-control" required></textarea>
+                        </div>
+                        
+                        <p id="error-message" class="error-message">Please fill in all fields correctly.</p>
+                        
+                        <button type="submit" class="submit-btn">Submit Review</button>
+                    </form>
+                </div>
                 
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author" required>
+                <div class="book-display" id="book-display">
+                    <h3 class="book-display-title">Book Details</h3>
+                    <div class="book-card">
+                        <div class="book-cover" id="book-cover"></div>
+                        <div class="book-info">
+                            <h4 class="book-title" id="book-title"></h4>
+                            <div class="book-meta">
+                                <span class="book-meta-item">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span id="book-author"></span>
+                                </span>
+                                <span class="book-meta-item">
+                                    <i class="fas fa-book"></i>
+                                    <span id="book-genre"></span>
+                                </span>
+                                <span class="book-meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span id="book-year"></span>
+                                </span>
+                            </div>
+                            <div class="book-rating" id="book-rating"></div>
+                        </div>
+                    </div>
+                </div>
                 
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" required>
-                
-                <label for="review">Review:</label>
-                <textarea id="review" name="review" required></textarea>
-
-                <p id="error-message" class="error">Incorrect author name. Please try again.</p>
-                
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-
-        <section id="book-details" class="hidden">
-            <h2>Book Details</h2>
-            <div class="book" id="book-display">
-                <img src="" alt="Book Cover">
-                <div class="book-details">
-                    <h2 id="book-title"></h2>
-                    <p><strong>Author:</strong> <span id="book-author"></span></p>
-                    <p><strong>Genre:</strong> <span id="book-genre"></span></p>
-                    <p><strong>Year:</strong> <span id="book-year"></span></p>
-                    <p><strong>Rating:</strong> <span id="book-rating"></span></p>
+                <div class="thank-you" id="thank-you">
+                    <div class="thank-you-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="thank-you-title">Thank You!</h3>
+                    <p class="thank-you-message">Your review has been successfully submitted.</p>
+                    <a href="books.html" class="back-btn">Browse More Books</a>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
+    
     <footer>
-        <p>&copy; 2024 Book Review Site</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-book-open"></i>
+                Celi's Book Haven
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="review.html">Submit Review</a>
+              
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-goodreads"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Celi's Book Haven. All rights reserved.
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Sample book data (replace with your actual data or fetch from an API)
-        const books = [
-            {
-                title: "Mc Mafia",
-                author: "Misha Glenny",
-                genre: "Crime",
-                year: "2022",
-                rating: "4.5/5",
-                imageUrl: "https://th.bing.com/th/id/R.c715e40038acb319760862073b24f01e?rik=Dnfu9ro65hhNgA&riu=http%3a%2f%2fgraphics8.nytimes.com%2fimages%2f2008%2f04%2f11%2fbooks%2fmcmafia-190.jpg&ehk=1eTWEF9XF%2btt7WNzzJ6%2bHJ683pBD9trXVQ7Dnm4TBzE%3d&risl=&pid=ImgRaw&r=0"
-            },
-            {
-                title: "Shamite E Vdekjes",
-                author: "Hasan Hasanaj",
-                genre: "History & Crime",
-                year: "2018",
-                rating: "4.9/5",
-                imageUrl: "https://www.botasot.info/media/botasot.info/images/2019/October/23/auto_LIB1571843117.jpg"
-            },
-            {
-                title: "Lugjet E Verdha I",
-                author: "Rexhep Hoxha",
-                genre: "Adventure",
-                year: "1959",
-                rating: "3.8/5",
-                imageUrl: "https://d11udzuu2adwwu.cloudfront.net/covers/1300144/9789951704014.jpg"
-            },
-            {
-                title: "Game Of Thrones",
-                author: "George R Martin",
-                genre: "Adventure",
-                year: "1999",
-                rating: "5.0/5",
-                imageUrl: "https://images.booksense.com/images/540/103/9780553103540.jpg"
-            },
-            {
-                title: "Dear John",
-                author: "Nicholas Sparks",
-                genre: "Romance",
-                year: "2019",
-                rating: "3.9/5",
-                imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Dear_John_film_poster.jpg/220px-Dear_John_film_poster.jpg"
-            },
-
-            {
-                title: "Stalking Jack The Ripper",
-                author: "Kerri Maniscalco",
-                genre: "Mystery",
-                year: "2004",
-                rating: "3.5/5",
-                imageUrl: "https://m.media-amazon.com/images/I/91MMb6EDbRL._AC_UF1000,1000_QL80_.jpg"
-            }
-
-        ];
-
-        // Function to handle form submission
-        document.getElementById('review-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting and refreshing the page
-
-            // Get form values
-            const title = document.getElementById('title').value.trim();
-            const author = document.getElementById('author').value.trim();
-            const rating = document.getElementById('rating').value.trim();
-            const review = document.getElementById('review').value.trim();
-
-            // Find the book in the array that matches the entered title and author
-            const foundBook = books.find(book => book.title.toLowerCase() === title.toLowerCase() && book.author.toLowerCase() === author.toLowerCase());
-
-            // If book is found, display its details
-            if (foundBook) {
-                document.getElementById('book-title').textContent = foundBook.title;
-                document.getElementById('book-author').textContent = foundBook.author;
-                document.getElementById('book-genre').textContent = foundBook.genre;
-                document.getElementById('book-year').textContent = foundBook.year;
-                document.getElementById('book-rating').textContent = foundBook.rating;
-                document.getElementById('book-display').querySelector('img').src = foundBook.imageUrl;
-
-                // Show book details section
-                document.getElementById('book-details').classList.remove('hidden');
-            } else {
-                // Display error message or handle no match case
-                alert("Book not found in the database. Please check the title and author.");
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Rating stars interaction
+            const ratingStars = document.querySelectorAll('.rating-stars input');
+            const ratingValue = document.getElementById('rating-value');
+            
+            ratingStars.forEach(star => {
+                star.addEventListener('change', function() {
+                    ratingValue.textContent = this.value;
+                });
+            });
+            
+            // Book data
+            const books = [
+                {
+                    title: "Mc Mafia",
+                    author: "Misha Glenny",
+                    genre: "Crime",
+                    year: "2022",
+                    rating: 4.5,
+                    imageUrl: "https://th.bing.com/th/id/R.c715e40038acb319760862073b24f01e?rik=Dnfu9ro65hhNgA&riu=http%3a%2f%2fgraphics8.nytimes.com%2fimages%2f2008%2f04%2f11%2fbooks%2fmcmafia-190.jpg&ehk=1eTWEF9XF%2btt7WNzzJ6%2bHJ683pBD9trXVQ7Dnm4TBzE%3d&risl=&pid=ImgRaw&r=0"
+                },
+                {
+                    title: "Shamite E Vdekjes",
+                    author: "Hasan Hasanaj",
+                    genre: "History & Crime",
+                    year: "2018",
+                    rating: 4.9,
+                    imageUrl: "https://www.botasot.info/media/botasot.info/images/2019/October/23/auto_LIB1571843117.jpg"
+                },
+                {
+                    title: "Lugjet E Verdha I",
+                    author: "Rexhep Hoxha",
+                    genre: "Adventure",
+                    year: "1959",
+                    rating: 3.8,
+                    imageUrl: "https://d11udzuu2adwwu.cloudfront.net/covers/1300144/9789951704014.jpg"
+                },
+                {
+                    title: "Game Of Thrones",
+                    author: "George R.R Martin",
+                    genre: "Adventure",
+                    year: "1999",
+                    rating: 5.0,
+                    imageUrl: "https://images.booksense.com/images/540/103/9780553103540.jpg"
+                },
+                {
+                    title: "Dear John",
+                    author: "Nicholas Sparks",
+                    genre: "Romance",
+                    year: "2019",
+                    rating: 3.9,
+                    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Dear_John_film_poster.jpg/220px-Dear_John_film_poster.jpg"
+                },
+                {
+                    title: "Stalking Jack The Ripper",
+                    author: "Kerri Maniscalco",
+                    genre: "Mystery",
+                    year: "2004",
+                    rating: 3.5,
+                    imageUrl: "https://m.media-amazon.com/images/I/91MMb6EDbRL._AC_UF1000,1000_QL80_.jpg"
+                }
+            ];
+            
+            // Form submission
+            const reviewForm = document.getElementById('review-form');
+            const errorMessage = document.getElementById('error-message');
+            const bookDisplay = document.getElementById('book-display');
+            const thankYou = document.getElementById('thank-you');
+            
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('title').value.trim();
+                const author = document.getElementById('author').value.trim();
+                const rating = document.querySelector('input[name="rating"]:checked');
+                const reviewText = document.getElementById('review').value.trim();
+                
+                // Validate form
+                if (!title || !author || !rating || !reviewText) {
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                errorMessage.style.display = 'none';
+                
+                // Find the book
+                const foundBook = books.find(book => 
+                    book.title.toLowerCase() === title.toLowerCase() && 
+                    book.author.toLowerCase() === author.toLowerCase()
+                );
+                
+                if (foundBook) {
+                    // Display book details
+                    document.getElementById('book-title').textContent = foundBook.title;
+                    document.getElementById('book-author').textContent = foundBook.author;
+                    document.getElementById('book-genre').textContent = foundBook.genre;
+                    document.getElementById('book-year').textContent = foundBook.year;
+                    document.getElementById('book-cover').style.backgroundImage = `url('${foundBook.imageUrl}')`;
+                    
+                    // Display rating stars
+                    const bookRating = document.getElementById('book-rating');
+                    bookRating.innerHTML = '';
+                    const fullStars = Math.floor(foundBook.rating);
+                    const hasHalfStar = foundBook.rating % 1 >= 0.5;
+                    
+                    for (let i = 0; i < 5; i++) {
+                        if (i < fullStars) {
+                            bookRating.innerHTML += '<i class="fas fa-star"></i>';
+                        } else if (i === fullStars && hasHalfStar) {
+                            bookRating.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+                        } else {
+                            bookRating.innerHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+                    
+                    bookRating.innerHTML += ` <span>${foundBook.rating.toFixed(1)}/5</span>`;
+                    
+                    // Show book display and hide form
+                    bookDisplay.style.display = 'block';
+                    reviewForm.reset();
+                    
+                    // After 3 seconds, show thank you message
+                    setTimeout(() => {
+                        bookDisplay.style.display = 'none';
+                        thankYou.style.display = 'block';
+                    }, 3000);
+                } else {
+                    errorMessage.textContent = "Book not found. Please check the title and author.";
+                    errorMessage.style.display = 'block';
+                }
+            });
         });
     </script>
 </body>

@@ -3,203 +3,1277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celi's Book Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Celi's Book Haven | Literary Paradise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary: #2c5e1a;
+            --primary-light: #3d7a29;
+            --secondary: #f8f1e5;
+            --accent: #e8c07d;
+            --dark: #1e1e1e;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: url('https://images4.alphacoders.com/132/1326368.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #333;
-            overflow: hidden;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
         header {
-            background-color: rgba(3, 66, 15, 0.8);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: small;
-            font-weight: 100;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--light);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
         }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 12px;
+            color: var(--accent);
+        }
+        
         nav {
             display: flex;
-            justify-content: center;
-            background-color: rgb(15, 61, 29);
-            padding: 0.5rem;
+            align-items: center;
         }
-        nav a {
-            color: white;
-            margin: 0 1rem;
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            min-height: calc(100vh - 120px);
+            padding: 3rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(44, 94, 26, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44, 94, 26, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: var(--transition);
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+        
+        .floating-books {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-book {
+            position: absolute;
+            width: 120px;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+            transform: rotate(10deg);
+            transition: all 8s linear;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .book-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .book-cover {
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .book-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .book-info {
+            padding: 1.5rem;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .book-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .book-rating {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .book-description {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--primary);
             font-size: 1.1rem;
         }
-        nav a:hover {
-            text-decoration: underline;
+        
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        footer {
-            background-color: rgba(3, 66, 15, 0.8);
-            color: white;
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 94, 26, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .rating-stars input {
+            display: none;
+        }
+        
+        .rating-stars label {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .rating-stars input:checked ~ label {
+            color: #ddd;
+        }
+        
+        .rating-stars label:hover,
+        .rating-stars input:checked + label,
+        .rating-stars label:hover ~ label {
+            color: var(--accent);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 94, 26, 0.3);
+        }
+        
+        .thank-you-container {
             text-align: center;
-            padding: 0.5rem;
-            font-size: small;
-            position: fixed;
-            bottom: 0;
-            width: 100%; 
-            z-index: 100; 
+            padding: 4rem 2rem;
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
         }
+        
+        .thank-you-icon {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: bounce 1s infinite alternate;
+        }
+        
+        .thank-you-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .reviewed-book {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--gray);
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .reviewed-book-cover {
+            width: 150px;
+            height: 220px;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-btn {
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+            color: var(--accent);
+        }
+        
+        .footer-newsletter p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .newsletter-btn {
+            padding: 0 1.5rem;
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #e0b469;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
         .hidden {
             display: none;
         }
-        .book-list li {
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-bottom: 1px solid #ccc;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 4px;
+        
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        .form-container {
-            max-width: 600px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        label {
-            display: block;
-            margin: 0.5rem 0 0.2rem;
+        
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-15px);
+            }
         }
-        input, textarea, button {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.2rem 0 1rem;
-            border-radius: 4px;
-        }
-        .error {
-            color: red;
-            display: none;
-        }
-
-        /* Books moving animation */
-        @keyframes moveBook {
+        
+        @keyframes float {
             0% {
-                transform: translate(0, 0);
+                transform: translateY(0) rotate(10deg);
             }
             50% {
-                transform: translate(20px, -20px);
+                transform: translateY(-20px) rotate(5deg);
             }
             100% {
-                transform: translate(0, 0);
+                transform: translateY(0) rotate(10deg);
             }
         }
-        .moving-books-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            max-width: 800px;
-            z-index: -1;
-            flex-wrap: wrap;
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-image img {
+                max-width: 100%;
+            }
         }
-        .moving-book {
-            width: 100px;
-            height: 150px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin: 10px;
-            animation: moveBook 5s ease-in-out infinite;
-            cursor: pointer; /* Make the books touchable */
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Celi's Book Store</h1>
-    </header>
-    <nav>
-        <a href="#" id="home-link">Home</a>
-        <a href="Books.html" id="book-list-link">Books</a>
-        <a href="#" id="submit-review-link">Submit Review</a>
-    </nav>
-    <main>
-        <div class="moving-books-container">
-            <div class="moving-book" style="background-image: url('https://m.media-amazon.com/images/I/61B0qnP6uQL._AC_UF1000,1000_QL80_.jpg');" onclick="showBookDetails('Book 1');"></div>
-            <div class="moving-book" style="background-image: url('https://cloudfront.bukinist.al/6372-large_default/lahuta-e-malcis.jpg');" onclick="showBookDetails('Book 2');"></div>
-            <div class="moving-book" style="background-image: url('https://orion-uploads.openroadmedia.com/md_9333ba5b72d2-hp.jpg');" onclick="showBookDetails('Book 3');"></div>
-            <div class="moving-book" style="background-image: url('https://images-cdn.reedsy.com/discovery/image/1862/image/large_0ce0cb683d02f030f1ddf06d763bdcfea5c76a59.jpg');" onclick="showBookDetails('Book 4');"></div>
-            <div class="moving-book" style="background-image: url('https://m.media-amazon.com/images/I/61BRxtp9qtL._AC_UF1000,1000_QL80_.jpg');" onclick="showBookDetails('Book 5');"></div>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                Celi's Book Haven
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#" id="home-link">Home</a></li>
+                    <li><a href="Books.html" id="home-link">Books</a></li>
+                    <li><a href="review.html" id="home-link">Submit Review</a></li>
+                  
+                </ul>
+            </nav>
         </div>
-        <section id="book-list" class="hidden">
-            <h2>All Books</h2>
-            <ul id="all-books" class="book-list">
-                <!-- All books will be listed here -->
-            </ul>
+    </header>
+    
+    <main>
+        <!-- Home Section -->
+        <section id="home-section">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Discover Your Next Literary Adventure</h1>
+                        <p>Immerse yourself in captivating stories, explore new worlds, and find your next favorite book in our carefully curated collection.</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn" id="explore-btn">Explore Books</a>
+                            <a href="#" class="btn btn-outline" id="review-btn">Submit Review</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Collection">
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Featured Books</h2>
+                
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('https://m.media-amazon.com/images/I/61B0qnP6uQL._AC_UF1000,1000_QL80_.jpg');">
+                            <span class="book-badge">Bestseller</span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">The Silent Patient</h3>
+                            <p class="book-author">By Alex Michaelides</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <p class="book-description">A psychological thriller about a woman who shoots her husband and then stops speaking, and the criminal psychotherapist who tries to unravel the mystery.</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn btn-small">View Details</a>
+                                <span class="price">$14.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('https://cloudfront.bukinist.al/6372-large_default/lahuta-e-malcis.jpg');">
+                            <span class="book-badge">Classic</span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Lahuta e Malcís</h3>
+                            <p class="book-author">By Gjergj Fishta</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <p class="book-description">An epic poem that stands as one of the greatest works of Albanian literature, celebrating the culture and history of the Albanian people.</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn btn-small">View Details</a>
+                                <span class="price">$19.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('https://orion-uploads.openroadmedia.com/md_9333ba5b72d2-hp.jpg');">
+                            <span class="book-badge">New Release</span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Harry Potter Series</h3>
+                            <p class="book-author">By J.K. Rowling</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <p class="book-description">The magical journey of a young wizard and his friends as they battle the forces of evil in the wizarding world.</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn btn-small">View Details</a>
+                                <span class="price">$59.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floating-books" id="floating-books"></div>
         </section>
-        <section id="submit-review" class="hidden form-container">
-            <h2>Submit a Review</h2>
-            <form id="review-form">
-                <label for="title">Book Title:</label>
-                <input type="text" id="title" name="title" required>
+        
+        <!-- Book List Section -->
+        <section id="book-list-section" class="hidden">
+            <div class="container">
+                <h2 class="section-title">Our Book Collection</h2>
                 
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author" required>
-                
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" required>
-                
-                <label for="review">Review:</label>
-                <textarea id="review" name="review" required></textarea>
-
-                <p id="error-message" class="error">Incorrect author name. Please try again.</p>
-                
-                <button type="submit">Submit</button>
-            </form>
+                <div class="books-grid" id="all-books-grid">
+                    <!-- Book cards will be dynamically added here -->
+                </div>
+            </div>
         </section>
-        <section id="thank-you" class="hidden">
-            <h2>Thank You for Your Review!</h2>
-            <p>Your review for <span id="reviewed-book-title"></span> has been submitted.</p>
-            <p>Author: <span id="reviewed-book-author"></span></p>
-            <p>Rating: <span id="reviewed-book-rating"></span></p>
-            <p>Review: <span id="reviewed-book-review"></span></p>
-            <img id="reviewed-book-image" src="" alt="Book Cover" style="width: 200px;">
+        
+        <!-- Submit Review Section -->
+        <section id="submit-review-section" class="hidden">
+            <div class="container">
+                <h2 class="section-title">Share Your Thoughts</h2>
+                
+                <div class="form-container">
+                    <form id="review-form">
+                        <div class="form-group">
+                            <label for="title" class="form-label">Book Title</label>
+                            <input type="text" id="title" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" id="author" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Rating</label>
+                            <div class="rating-stars">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="review" class="form-label">Your Review</label>
+                            <textarea id="review" class="form-control" required></textarea>
+                        </div>
+                        
+                        <p id="error-message" class="error hidden">Please fill in all fields correctly.</p>
+                        
+                        <button type="submit" class="submit-btn">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Thank You Section -->
+        <section id="thank-you-section" class="hidden">
+            <div class="container">
+                <div class="thank-you-container">
+                    <div class="thank-you-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2 class="thank-you-title">Thank You!</h2>
+                    <p>Your review has been successfully submitted.</p>
+                    
+                    <div class="reviewed-book">
+                        <div class="reviewed-book-cover" id="thank-you-book-cover"></div>
+                        <h3 id="thank-you-book-title"></h3>
+                        <p id="thank-you-book-author"></p>
+                        <div class="book-rating" id="thank-you-book-rating"></div>
+                        <p id="thank-you-book-review"></p>
+                    </div>
+                    
+                    <a href="#" class="btn back-btn" id="back-to-home">Back to Home</a>
+                </div>
+            </div>
         </section>
     </main>
+    
     <footer>
-        <p>&copy; 2024 Celi's Book Store</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-book-open"></i>
+                    Celi's Book Haven
+                </div>
+                <p>Your destination for discovering extraordinary books and sharing your literary experiences with fellow book lovers.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-goodreads"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Browse Books</a></li>
+                    <li><a href="#">Submit Review</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Fiction</a></li>
+                    <li><a href="#">Non-Fiction</a></li>
+                    <li><a href="#">Mystery</a></li>
+                    <li><a href="#">Science Fiction</a></li>
+                    <li><a href="#">Biography</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest book releases and literary news.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+                <p>We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Celi's Book Haven. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const movingBooks = document.querySelectorAll('.moving-book');
-
-            // Function to show book details when clicked
-            function showBookDetails(bookTitle) {
-                const selectedBook = books.find(book => book.title === bookTitle);
-
-                if (selectedBook) {
-                    // Update the form with book details
-                    document.getElementById('title').value = selectedBook.title;
-                    document.getElementById('author').value = selectedBook.author;
-                    document.getElementById('rating').value = selectedBook.rating;
-                    document.getElementById('review').value = selectedBook.review;
-
-                    // Display the submit review section
-                    showSection(document.getElementById('submit-review'));
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Navigation between sections
+            const sections = {
+                home: document.getElementById('home-section'),
+                bookList: document.getElementById('book-list-section'),
+                submitReview: document.getElementById('submit-review-section'),
+                thankYou: document.getElementById('thank-you-section')
+            };
+            
+            function showSection(section) {
+                // Hide all sections
+                Object.values(sections).forEach(sec => {
+                    if (sec) sec.classList.add('hidden');
+                });
+                
+                // Show the requested section
+                if (section) section.classList.remove('hidden');
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
-
-            // Book data (sample data for demonstration)
+            
+            // Navigation event listeners
+            document.getElementById('home-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.home);
+            });
+            
+            document.getElementById('book-list-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.bookList);
+            });
+            
+            document.getElementById('submit-review-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.submitReview);
+            });
+            
+            document.getElementById('explore-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.bookList);
+            });
+            
+            document.getElementById('review-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.submitReview);
+            });
+            
+            document.getElementById('back-to-home').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(sections.home);
+            });
+            
+            // Book data
             const books = [
-                { title: 'Book 1', author: 'Author 1', rating: 4, review: 'Great book!', image: 'https://via.placeholder.com/150' },
-                { title: 'Book 2', author: 'Author 2', rating: 5, review: 'Excellent read.', image: 'https://via.placeholder.com/150' },
-                { title: 'Book 3', author: 'Author 3', rating: 3, review: 'Interesting plot.', image: 'https://via.placeholder.com/150' },
-                { title: 'Book 4', author: 'Author 4', rating: 4, review: 'Well
+                {
+                    title: 'The Silent Patient',
+                    author: 'Alex Michaelides',
+                    rating: 4.5,
+                    review: 'A psychological thriller about a woman who shoots her husband and then stops speaking, and the criminal psychotherapist who tries to unravel the mystery.',
+                    price: 14.99,
+                    cover: 'https://m.media-amazon.com/images/I/61B0qnP6uQL._AC_UF1000,1000_QL80_.jpg',
+                    category: 'Thriller',
+                    badge: 'Bestseller'
+                },
+                {
+                    title: 'Lahuta e Malcís',
+                    author: 'Gjergj Fishta',
+                    rating: 4.0,
+                    review: 'An epic poem that stands as one of the greatest works of Albanian literature, celebrating the culture and history of the Albanian people.',
+                    price: 19.99,
+                    cover: 'https://cloudfront.bukinist.al/6372-large_default/lahuta-e-malcis.jpg',
+                    category: 'Poetry',
+                    badge: 'Classic'
+                },
+                {
+                    title: 'Harry Potter Series',
+                    author: 'J.K. Rowling',
+                    rating: 5.0,
+                    review: 'The magical journey of a young wizard and his friends as they battle the forces of evil in the wizarding world.',
+                    price: 59.99,
+                    cover: 'https://orion-uploads.openroadmedia.com/md_9333ba5b72d2-hp.jpg',
+                    category: 'Fantasy',
+                    badge: 'New Release'
+                },
+                {
+                    title: 'The Great Gatsby',
+                    author: 'F. Scott Fitzgerald',
+                    rating: 4.2,
+                    review: 'A portrait of the Jazz Age in all of its decadence and excess, capturing the American Dream and its corruption.',
+                    price: 12.99,
+                    cover: 'https://images-na.ssl-images-amazon.com/images/I/71FTb9X6wsL._AC_UL600_SR600,600_.jpg',
+                    category: 'Classic',
+                    badge: ''
+                },
+                {
+                    title: 'To Kill a Mockingbird',
+                    author: 'Harper Lee',
+                    rating: 4.8,
+                    review: 'A powerful story of racial injustice and the loss of innocence, set in the American South during the 1930s.',
+                    price: 10.99,
+                    cover: 'https://images.penguinrandomhouse.com/cover/9780061120084',
+                    category: 'Classic',
+                    badge: ''
+                },
+                {
+                    title: '1984',
+                    author: 'George Orwell',
+                    rating: 4.7,
+                    review: 'A dystopian novel set in a totalitarian regime, exploring themes of surveillance, censorship, and psychological manipulation.',
+                    price: 9.99,
+                    cover: 'https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg',
+                    category: 'Dystopian',
+                    badge: ''
+                },
+                {
+                    title: 'Pride and Prejudice',
+                    author: 'Jane Austen',
+                    rating: 4.5,
+                    review: 'A romantic novel that follows the emotional development of Elizabeth Bennet, who learns about the consequences of hasty judgments.',
+                    price: 8.99,
+                    cover: 'https://images-na.ssl-images-amazon.com/images/I/71Q1tPupKjL._AC_UL600_SR600,600_.jpg',
+                    category: 'Romance',
+                    badge: ''
+                },
+                {
+                    title: 'The Hobbit',
+                    author: 'J.R.R. Tolkien',
+                    rating: 4.7,
+                    review: 'A fantasy novel about the quest of home-loving Bilbo Baggins to win a share of the treasure guarded by the dragon Smaug.',
+                    price: 11.99,
+                    cover: 'https://images-na.ssl-images-amazon.com/images/I/710+HcoP38L._AC_UL600_SR600,600_.jpg',
+                    category: 'Fantasy',
+                    badge: ''
+                }
+            ];
+            
+            // Populate book list section
+            const allBooksGrid = document.getElementById('all-books-grid');
+            
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+                
+                const ratingStars = [];
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= Math.floor(book.rating)) {
+                        ratingStars.push('<i class="fas fa-star"></i>');
+                    } else if (i - 0.5 <= book.rating) {
+                        ratingStars.push('<i class="fas fa-star-half-alt"></i>');
+                    } else {
+                        ratingStars.push('<i class="far fa-star"></i>');
+                    }
+                }
+                
+                bookCard.innerHTML = `
+                    <div class="book-cover" style="background-image: url('${book.cover}')">
+                        ${book.badge ? `<span class="book-badge">${book.badge}</span>` : ''}
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">By ${book.author}</p>
+                        <div class="book-rating">
+                            ${ratingStars.join('')}
+                            <span>(${book.rating})</span>
+                        </div>
+                        <p class="book-description">${book.review}</p>
+                        <div class="book-actions">
+                            <a href="#" class="btn btn-small">View Details</a>
+                            <span class="price">$${book.price.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+                
+                allBooksGrid.appendChild(bookCard);
+            });
+            
+            // Review form submission
+            const reviewForm = document.getElementById('review-form');
+            const errorMessage = document.getElementById('error-message');
+            
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('title').value;
+                const author = document.getElementById('author').value;
+                const rating = document.querySelector('input[name="rating"]:checked');
+                const review = document.getElementById('review').value;
+                
+                if (!title || !author || !rating || !review) {
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+                
+                errorMessage.classList.add('hidden');
+                
+                // Display thank you section with review details
+                document.getElementById('thank-you-book-title').textContent = title;
+                document.getElementById('thank-you-book-author').textContent = `By ${author}`;
+                
+                const ratingValue = parseInt(rating.value);
+                const ratingStars = [];
+                for (let i = 0; i < 5; i++) {
+                    if (i < ratingValue) {
+                        ratingStars.push('<i class="fas fa-star"></i>');
+                    } else {
+                        ratingStars.push('<i class="far fa-star"></i>');
+                    }
+                }
+                
+                document.getElementById('thank-you-book-rating').innerHTML = ratingStars.join('');
+                document.getElementById('thank-you-book-review').textContent = review;
+                
+                // Set a random book cover for demonstration
+                const randomCover = books[Math.floor(Math.random() * books.length)].cover;
+                document.getElementById('thank-you-book-cover').style.backgroundImage = `url('${randomCover}')`;
+                
+                showSection(sections.thankYou);
+                
+                // Reset form
+                reviewForm.reset();
+            });
+            
+            // Create floating books animation
+            const floatingBooksContainer = document.getElementById('floating-books');
+            const bookCovers = [
+                'https://m.media-amazon.com/images/I/61B0qnP6uQL._AC_UF1000,1000_QL80_.jpg',
+                'https://cloudfront.bukinist.al/6372-large_default/lahuta-e-malcis.jpg',
+                'https://orion-uploads.openroadmedia.com/md_9333ba5b72d2-hp.jpg',
+                'https://images-na.ssl-images-amazon.com/images/I/71FTb9X6wsL._AC_UL600_SR600,600_.jpg',
+                'https://images.penguinrandomhouse.com/cover/9780061120084',
+                'https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg',
+                'https://images-na.ssl-images-amazon.com/images/I/71Q1tPupKjL._AC_UL600_SR600,600_.jpg',
+                'https://images-na.ssl-images-amazon.com/images/I/710+HcoP38L._AC_UL600_SR600,600_.jpg'
+            ];
+            
+            for (let i = 0; i < 12; i++) {
+                const book = document.createElement('div');
+                book.className = 'floating-book';
+                book.style.backgroundImage = `url('${bookCovers[i % bookCovers.length]}')`;
+                book.style.left = `${Math.random() * 100}%`;
+                book.style.top = `${Math.random() * 100}%`;
+                book.style.animationDelay = `${Math.random() * 5}s`;
+                book.style.animationDuration = `${5 + Math.random() * 10}s`;
+                floatingBooksContainer.appendChild(book);
+            }
+            
+            // Make floating books animate
+            const floatingBooks = document.querySelectorAll('.floating-book');
+            floatingBooks.forEach(book => {
+                book.style.animation = `float ${6 + Math.random() * 6}s ease-in-out infinite`;
+            });
+        });
+    </script>
+</body>
+</html>
